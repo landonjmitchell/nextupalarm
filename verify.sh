@@ -40,10 +40,19 @@ red=$(curl -sS -o /dev/null -w "%{http_code}" --max-time 15 "http://$D/" 2>/dev/
 
 echo
 echo "── Certificate ─────────────────────────────────"
-cert=$(echo | timeout 15 openssl s_client -servername $D -connect $D:443 2>/dev/null \
-       | openssl x509 -noout -issuer -enddate 2>/dev/null)
-if [ -n "$cert" ]; then ok "valid cert"; echo "$cert" | sed 's/^/      /'
-else no "no valid certificate yet (GitHub can take up to an hour after DNS resolves)"; fi
+# macOS has no timeout(1). curl IS the verification test: a 200 without -k means
+# the chain validated. openssl is used only to read the dates.
+verified=$(curl -sS -o /dev/null -w "%{http_code}" --max-time 15 "https://$D/" 2>/dev/null)
+dates=$(echo | openssl s_client -servername $D -connect $D:443 2>/dev/null \
+       | openssl x509 -noout -subject -enddate 2>/dev/null)
+if [ "$verified" = "200" ]; then
+  ok "certificate valid (chain verified by curl)"
+  [ -n "$dates" ] && echo "$dates" | sed 's/^/      /'
+elif [ -n "$dates" ]; then
+  hm "certificate present but chain did not verify"; echo "$dates" | sed 's/^/      /'
+else
+  no "no certificate yet (GitHub can take up to an hour after DNS resolves)"
+fi
 
 echo
 echo "── Email ───────────────────────────────────────"
