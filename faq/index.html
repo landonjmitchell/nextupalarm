@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FAQ — Next Up</title>
+<meta name="description" content="Common questions about Next Up — A Podcast Alarm.">
+<link rel="stylesheet" href="/_style.css">
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="mark"><a href="/" style="color:inherit;text-decoration:none">Next Up</a></div>
+  <h1>Frequently asked</h1>
+</header>
+
+<h2>My alarm didn't go off</h2>
+<p>This is the most common report, and on recent versions of iOS it's usually not something you did wrong. The current release keeps itself running in the background to play your podcast at the right moment, and newer versions of iOS are much more aggressive about shutting background apps down.</p>
+<p>Things that help with the current version:</p>
+<ul>
+  <li>Keep the app open in the background — don't swipe it away before bed.</li>
+  <li>Keep the phone plugged in overnight.</li>
+  <li>Make sure notifications are allowed: Settings → Next Up → Notifications.</li>
+  <li>Set a backup alarm sound, so there's something to fall back on.</li>
+</ul>
+<p>A rebuild is underway on Apple's newer alarm APIs, which let the system itself fire the alarm. That removes the underlying cause rather than working around it.</p>
+
+<h2>The alarm went off, but no podcast played</h2>
+<p>Next Up plays episodes that have already been <strong>downloaded</strong> in Apple's Podcasts app. If the episode was streamed rather than downloaded, or if Podcasts automatically removed it after you listened, there may be nothing on the device for the alarm to play. It falls back to your backup sound in that case.</p>
+<p>In Apple Podcasts, try turning off automatic download removal (Podcasts → Settings → turn off "Remove Played Downloads") and downloading a few episodes manually.</p>
+
+<h2>My podcasts don't appear in the app</h2>
+<p>Same cause as above. Next Up reads podcasts from your device's media library, and only sees episodes that Apple Podcasts has actually downloaded and kept. It also needs permission: Settings → Next Up → Media &amp; Apple Music.</p>
+
+<h2>It plays music instead of my podcast</h2>
+<p>A known bug in the current version. It happens when the app can't match the show you picked and falls through to whatever the system music player has queued. Re-selecting the podcast in the alarm's settings sometimes clears it.</p>
+
+<h2>How do the free alarms work?</h2>
+<p>New users get five free alarms — counted when an alarm actually goes off, not when you create one. After that, a one-time purchase unlocks unlimited alarms. There's no subscription.</p>
+
+<h2>I paid before. Do I have to pay again?</h2>
+<p>No. Purchases are tied to your Apple Account. Use <strong>Restore Purchases</strong> in the app's settings, and make sure you're signed in with the same Apple Account you bought it with.</p>
+
+<h2>Does it drain my battery?</h2>
+<p>The current version does, yes — more than it should. Keeping the app alive overnight to play audio is expensive, and this is one of the main things the rebuild addresses.</p>
+
+<h2>Something else</h2>
+<p>Email <a href="mailto:support@nextupalarm.com">support@nextupalarm.com</a>. Tell me what you expected, what happened instead, and your iPhone model and iOS version.</p>
+
+<nav>
+  <a href="/">Home</a>
+  <a href="/support/">Support</a>
+  <a href="/privacy-policy/">Privacy &amp; Terms</a>
+</nav>
+
+<footer>
+  Next Up — A Podcast Alarm · by <a href="https://landonjmitchell.com">Landon&nbsp;J.&nbsp;Mitchell</a>
+</footer>
+
+</div>
+</body>
+</html>
